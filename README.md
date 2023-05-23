@@ -1,6 +1,6 @@
-# lolSTats
+# L'IA c'est pas sorcier : LLM edition
 
-Streamlit application side projects for LLM - few shot learning discovery
+Streamlit application support for a LLM educational video and a little introduction challenge to few-shot learning
 
 ## Requirements
 
