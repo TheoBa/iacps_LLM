@@ -58,4 +58,4 @@ def send_simple_message(contact_pseudo: str, contact_mail: str, submitted_model:
 		data={"from": "Mailgun Sandbox <postmaster@sandboxe92723bea09e43b99780f267ff7e75c2.mailgun.org>",
 			"to": "Théo Badoz <theo.badoz@gmail.com>",
 			"subject": contact_pseudo + " submission",
-			"text": "mail: " + contact_mail + "\nmodel: " + submitted_model})
+			"text": "mail:\n" + contact_mail + "\nmodel:\n" + submitted_model})
