@@ -2,7 +2,7 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from utils import get_challenge_output, send_simple_message
-from tab2 import fine_tuning
+from tab2 import fine_tuning, few_shot_learning
 
 # SETTING PAGE CONFIG TO WIDE MODE
 st.set_page_config(page_icon="⚙️", page_title="L'IA c'est pas soricer : Challenge FSL", layout="wide")
@@ -20,6 +20,7 @@ def main_tab2():
     st.subheader("Le fine-tuning")
     fine_tuning()
     st.subheader("Le few shot learning")
+    few_shot_learning()
 
 
 def main_tab3():
