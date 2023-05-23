@@ -38,7 +38,7 @@ def main_tab3():
         submit_FSL_test = st.form_submit_button(label='Test this setup')
     if submit_FSL_test:
         st.markdown(get_challenge_output(API_URL, HEADERS, prompt, parameters))
-    with st.form(key='Submit your model to the challenge'):
+    with st.form(key='Submit your model to the challenge', clear_on_submit=True):
         contact_pseudo = st.text_input(label="Pseudo")
         contact_mail = st.text_input(label="Email")
         submitted_model = st.text_area(label="Copy paste your prompt here")
