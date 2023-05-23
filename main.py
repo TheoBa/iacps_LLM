@@ -12,8 +12,8 @@ st.subheader("Voyage au pays des Large Language Models (LLM)")
 
 
 def main_tab1():
-    st.markdown("Les visuels et rappels ci-dessous sont issus de la vidéo : [Insérer le lien vers notre vidéo youtube], n'hésitez pas à faire un tour avant")
-
+    st.markdown("Les visuels et rappels ci-dessous sont issus de la vidéo : [Il faudra penser à insérer le lien vers la bonne vidéo], n'hésitez pas à faire un tour avant")
+    st.video('https://www.youtube.com/watch?v=89KrwcGCwZ8&t=2s') 
 
 def main_tab2():
     st.markdown('Comment adapter un LLM à performer sur une tâche spécifique ?')
@@ -47,7 +47,7 @@ def main_tab3():
     if submit_FSL_model:
         send_simple_message(contact_pseudo, contact_mail, submitted_model)
 
-tab1, tab2, tab3 = st.tabs(["Qu'est ce qu'un LLM", "Comment utiliser un LLM", "Le challenge"])
+tab1, tab2, tab3 = st.tabs(["LLM qu'est-ce que c'est", "LLM comment s'en servir", "Le challenge"])
 with tab1:
    main_tab1()
 
