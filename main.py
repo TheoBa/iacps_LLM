@@ -39,6 +39,10 @@ def main_tab2():
 
 def main_tab3():
     st.header("L'analyse de sentiment")
+    url_hf = "https://huggingface.co"
+    url_token = "https://huggingface.co/settings/tokens"
+    st.markdown("Pour participer au challenge vous aurez besoin d'un compte [HuggingFace](%s)" % url_hf)
+    st.markdown("Il vous faudra créer un [token en lecture](%s) (READ)" % url_token)
     test_form()
     challenge_form()
 

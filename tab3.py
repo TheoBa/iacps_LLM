@@ -4,7 +4,6 @@ from utils import get_challenge_output, send_simple_message
 
 def test_form():
     with st.form(key='prompt FSL'):
-        st.markdown('Récupérez votre token HuggingFace ici: https://huggingface.co/settings/tokens')
         API_TOKEN = st.text_input(label="HF_API_TOKEN")
         HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
         API_URL = "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-2.7B"
