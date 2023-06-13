@@ -6,24 +6,28 @@ def test_form():
     with st.form(key='prompt FSL'):
         st.subheader("Formulaire de test")
         st.markdown("En anglais et en respectant le template ci-dessous:\n- Renseignez votre token HF\n- Décrivez précisément la tâche que vous souhaitez que le modèle apprenne et exécute\n- Donnez autant d'exemples que nécessaire en veillant à bien ajouter les caractères de séparation “###”\n- Ajouter enfin une phrase _test_ avant de lancer le test\n Si votre token est valide: vous pourrez observez le résultat")
-        API_TOKEN = st.text_input(label="HF_API_TOKEN")
+        API_TOKEN = st.text_input(label="HF_API_TOKEN", type="password")
         HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
         API_URL = "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-2.7B"
-        prompt = st.text_area(label='Your prompt', value='''Task to perform\nexample1\nsol1\n###\nexample2\nsol2\n###\nexample3\nsol3\n###\ntest''')
+        prompt = st.text_area(label='Your prompt', value='''Task to perform\nexample1\nsol1\n###\nexample2\nsol2\n###\nexample3\nsol3\n###\ntest''', height=280)
+        prompt += "\n"
         parameters = {
             "max_new_tokens": 1,
-            "temperature": .5,
+            "temperature": .1,
             "end_sequence": "###"
             }
-        submit_FSL_test = st.form_submit_button(label='Tester mon setup sur mon test')
+        submit_FSL_test = st.form_submit_button(label='Tester mon prompt sur un test custom')
     if submit_FSL_test:
         st.markdown(get_challenge_output(API_URL, HEADERS, prompt, parameters))
 
 
-def challenge_description():
-    st.markdown("## Sujet du challenge et livrable:\n### Le sujet\nVous allez devoir me proposer un setup de modèle pour performer des tâches d'analyse sentimental d'objet d'avis AMAZON. On souhaite que le modèle classifie les réponses selon 2 labels: is the review 'positive' or 'negative'\nExemples:\n1. “This is the worst book.”: “negative”\n2. “The best soundtrack ever to anything.”: “positive”")
+def challenge_description1():
+    st.markdown("## Challenge:\nProposer un setup de prompt pour performer des tâches **d'analyse sentimental** sur des objets d'avis AMAZON au moyen de GPT Neo. On souhaite que le modèle classifie des phrases selon 2 labels: is the review 'positive' or 'negative'")
+    st.markdown("Exemples:\n 1. “This is the worst book.”: negative\n2. “The best soundtrack ever to anything.”: positive, \n3. “Pop psychology at its worst.”: negative\n4. “Amazing!”: positive\n5. “Stuning even for the non-gamer.”: positive\n6. “Fuzzy around the edges.”: negative")	
 
-    st.markdown("## **Evaluation:**\nVos prompts seront soumis à un data-set de 200 évaluations.")
+
+def challenge_description2():
+    st.markdown("## **Evaluation:**\nVos prompts seront soumis à un data-set de 100 évaluations.")
     st.markdown("Rentre en ligne de compte:")
     st.latex(r'''
     \begin{cases}

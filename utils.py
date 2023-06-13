@@ -36,7 +36,7 @@ def get_challenge_output(API_URL, HEADERS, prompt, parameters):
     if data == "invalid_token":
         return data
     else:
-        return data[0][len(prompt):] 
+        return data[0][len(prompt):]
 
 
 def get_model_score(test, model):

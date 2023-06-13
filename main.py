@@ -2,10 +2,10 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 from tab2 import fine_tuning, few_shot_learning
-from tab3 import test_form, challenge_form, challenge_description
+from tab3 import test_form, challenge_form, challenge_description1, challenge_description2
 
 # SETTING PAGE CONFIG TO WIDE MODE
-st.set_page_config(page_icon="⚙️", page_title="L'IA c'est pas soricer : Challenge FSL", layout="wide")
+st.set_page_config(page_icon="⚙️", page_title="L'IA c'est pas sorcier : Challenge FSL", layout="wide")
 
 st.title("L'IA c'est pas sorcier: ")
 st.subheader("Voyage au pays des Large Language Models (LLM)")        
@@ -38,13 +38,13 @@ def main_tab2():
 
 
 def main_tab3():
-    st.header("L'analyse de sentiment")
+    challenge_description1()
     url_hf = "https://huggingface.co"
     url_token = "https://huggingface.co/settings/tokens"
     st.markdown("Pour participer au challenge vous aurez besoin d'un compte [HuggingFace](%s)" % url_hf)
     st.markdown("Il vous faudra créer un [token en lecture](%s) (READ)" % url_token)
     test_form()
-    challenge_description()
+    challenge_description2()
     challenge_form()
 
 main_sidebar()
