@@ -10,12 +10,13 @@ def query_few_shot_learning(API_URL, HEADERS, payload='', parameters=None, optio
         'options': options
         }
     response = requests.request("POST", API_URL, headers=HEADERS, data=json.dumps(body))
-    if str(response) == "<Response [400]>":
-        st.markdown("INVALID TOKEN")
-        return 'invalid_token'
+    try:
+      response.raise_for_status()
+    except requests.exceptions.HTTPError:
+        st.markdown("Error:"+" ".join(response.json()['error']))
+        return "Error:"+" ".join(response.json()['error'])
     else:
-        test = json.loads(response.content.decode("utf-8"))
-        return (response.json()[0]['generated_text'], test)
+      return response.json()[0]['generated_text']
 
 
 def generate_prompt(model, test):
@@ -36,7 +37,7 @@ def get_challenge_output(API_URL, HEADERS, prompt, parameters):
     if data == "invalid_token":
         return data
     else:
-        return data[0][len(prompt):]
+        return data[len(prompt):]
 
 
 def get_model_score(test, model):

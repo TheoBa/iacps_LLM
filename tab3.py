@@ -1,5 +1,9 @@
 import streamlit as st
 from utils import get_challenge_output, send_simple_message
+from transformers import AutoTokenizer
+
+
+tokenizer = AutoTokenizer.from_pretrained("EleutherAI/gpt-j-6B")
 
 
 def test_form():
@@ -8,13 +12,11 @@ def test_form():
         st.markdown("En anglais et en respectant le template ci-dessous:\n- Renseignez votre token HF\n- Décrivez précisément la tâche que vous souhaitez que le modèle apprenne et exécute\n- Donnez autant d'exemples que nécessaire en veillant à bien ajouter les caractères de séparation “###”\n- Ajouter enfin une phrase _test_ avant de lancer le test\n Si votre token est valide: vous pourrez observez le résultat")
         API_TOKEN = st.text_input(label="HF_API_TOKEN", type="password")
         HEADERS = {"Authorization": f"Bearer {API_TOKEN}"}
-        API_URL = "https://api-inference.huggingface.co/models/EleutherAI/gpt-neo-2.7B"
+        API_URL = "https://api-inference.huggingface.co/models/gpt2"
         prompt = st.text_area(label='Your prompt', value='''Task to perform\nexample1\nsol1\n###\nexample2\nsol2\n###\nexample3\nsol3\n###\ntest''', height=280)
-        prompt += "\n"
         parameters = {
             "max_new_tokens": 1,
-            "temperature": .1,
-            "end_sequence": "###"
+            "temperature": .1
             }
         submit_FSL_test = st.form_submit_button(label='Tester mon prompt sur un test custom')
     if submit_FSL_test:
@@ -22,7 +24,7 @@ def test_form():
 
 
 def challenge_description1():
-    st.markdown("## Challenge:\nProposer un setup de prompt pour performer des tâches **d'analyse sentimental** sur des objets d'avis AMAZON au moyen de GPT Neo. On souhaite que le modèle classifie des phrases selon 2 labels: is the review 'positive' or 'negative'")
+    st.markdown("## Challenge:\nProposer un setup de prompt pour performer des tâches **d'analyse sentimental** sur des objets d'avis AMAZON au moyen de GPT2. On souhaite que le modèle classifie des phrases selon 2 labels: 'positive' or 'negative'")
     st.markdown("Exemples:\n 1. “This is the worst book.”: negative\n2. “The best soundtrack ever to anything.”: positive, \n3. “Pop psychology at its worst.”: negative\n4. “Amazing!”: positive\n5. “Stuning even for the non-gamer.”: positive\n6. “Fuzzy around the edges.”: negative")	
 
 
