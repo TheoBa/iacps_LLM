@@ -25,8 +25,8 @@ def main_sidebar():
         st.markdown("**Théo**: “Ce qui me plait c'est de bidouiller, de manipuler ces technologies et de créer des petites applications. Mais ce qui me plait plus encore c'est de transmettre, de faire découvrir ce que j'ai compris à mes collègues, mes amis, ma famille.”")
 
 def main_tab1():
-    st.markdown("Les visuels et rappels ci-dessous sont issus de la vidéo : [Il faudra penser à insérer le lien vers la bonne vidéo], n'hésitez pas à faire un tour avant")
-    st.video('https://www.youtube.com/watch?v=89KrwcGCwZ8&t=2s') 
+    st.markdown("Les visuels et rappels ci-dessous sont issus de la vidéo : (n'hésitez pas à faire un tour avant)")
+    st.video('https://www.youtube.com/watch?v=gs34fyLST7s') 
 
 
 def main_tab2():
