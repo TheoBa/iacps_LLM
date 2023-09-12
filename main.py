@@ -26,7 +26,7 @@ def main_sidebar():
 
 def main_tab1():
     st.markdown("Les visuels et rappels ci-dessous sont issus de la vidéo : (n'hésitez pas à faire un tour avant)")
-    st.video('https://www.youtube.com/watch?v=gs34fyLST7s') 
+    st.video('https://www.youtube.com/watch?v=izlcj0PEaPw') 
 
 
 def main_tab2():
